@@ -11,19 +11,20 @@ public class MaquinaExpendedoraMejorada {
     // El destino del billete
     private String estacionDestino;
     private int numeroBilletesVendidos;
-
+    private boolean maquinapremio;
     /**
      * Crea una maquina expendedora de billetes de tren con el 
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino) {
+    public MaquinaExpendedoraMejorada(int precioDelBillete, String origen, String destino,boolean maquinaConPremio) {
         precioBillete = precioDelBillete;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = origen;
         estacionDestino = destino;
         numeroBilletesVendidos=0;
+        maquinapremio = maquinaConPremio;
 
     }
 
@@ -32,13 +33,14 @@ public class MaquinaExpendedoraMejorada {
      * precio del billete y el origen y destino dados. Se asume que el precio
      * del billete que se recibe es mayor que 0.
      */
-    public MaquinaExpendedoraMejorada() {
+    public MaquinaExpendedoraMejorada(boolean maquinaConPremio ) {
         precioBillete = 12;
         balanceClienteActual = 0;
         totalDineroAcumulado = 0;
         estacionOrigen = "Leon";
         estacionDestino = "Londres";
         numeroBilletesVendidos=0;
+        maquinapremio = maquinaConPremio;   
 
     }
 
@@ -115,6 +117,9 @@ public class MaquinaExpendedoraMejorada {
             System.out.println("##################");
             System.out.println();         
             numeroBilletesVendidos=numeroBilletesVendidos+1;
+            if (maquinapremio == true) {
+                System.out.println("tienes un descuento del" + precioBillete*0.25);
+            }
             // Actualiza el total de dinero acumulado en la maquina
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
